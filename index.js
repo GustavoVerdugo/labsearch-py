@@ -3,17 +3,18 @@ const fs = require('fs');
 
 // Conexión a la base de datos
 const connection = mysql.createConnection({
-  host: '201.148.104.108',
+  host: 'levservice.ddns.net',
+  port: 5056,
   user: 'corelabs_neo',
-  password: 'Maximiliano1998.',
-  database: 'corelabs_labsearch'
+  password: 'core#Password$2023Maxi',
+  database: 'labsearch'
 });
 
 
 connection.connect();
 
 // Consulta SQL para obtener los datos
-const sqlQuery = 'SELECT product_name, brand_name, category_name, product_price FROM product';
+const sqlQuery = 'SELECT product_name, brand_name, category_name, product_price, product_image FROM product';
 
 connection.query(sqlQuery, (error, results) => {
   if (error) throw error;
@@ -32,7 +33,8 @@ connection.query(sqlQuery, (error, results) => {
     product_name: item.product_name,
     brand: item.brand_name,
     category: item.category_name,
-    price: item.product_price
+    price: item.product_price,
+    image: item.product_image
   }));
   console.log(results);
   console.log('num_categories:', num_categories);

@@ -15,7 +15,7 @@ def search_products(query, max_results=20):
         product_name = product['product_name']
         similarity_score = fuzz.partial_ratio(query.lower(), product_name.lower())
         if similarity_score > 60:
-            results.append((product_name, similarity_score, product['price']))
+            results.append((product_name, similarity_score, product['price'], product['image']))
         
         if len(results) >= max_results:
             break
@@ -33,7 +33,8 @@ def search():
             results.append({
                 "product": result[0],
                 "similarity": result[1],
-                "price": result[2]
+                "price": result[2],
+                "image": result[3]
             })
         return jsonify(results)
     else:
