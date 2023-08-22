@@ -9,6 +9,8 @@ with open('processed_data.json', 'r') as file:
     data = json.load(file)
 
 # Función para buscar productos en los datos
+# Para agregar nuevas columnas se deben configurar
+# en el script js
 def search_products(query, max_results=20):
     results = []
     for product in data:
